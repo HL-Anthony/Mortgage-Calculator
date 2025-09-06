@@ -5,28 +5,37 @@ import java.text.NumberFormat;
 public class MainClass {
 
 
+  //----------------------------------------------------------------------------------------------------------------//
+
+    public static void main (String [] args) {
+
+        welcomeMessage();
+        getInput();
+        calculations();
+        printResults();
+        thankYouMessage();
+
+    }
+
+  //----------------------------------------------------------------------------------------------------------------//
+
+
+// Prints a hello message
+    static void welcomeMessage(){
+
+        JOptionPane.showMessageDialog(null, "Thank you for using my mortgage calculator :)");
+
+    }
+
+
+
 // Declaring the variables for the user input
 static float loan;
 static int years;
 static float interestRate;
 
 
-  //----------------------------------------------------------------------------------------------------------------//
-
-
-    public static void main (String [] args) {
-
-        JOptionPane.showMessageDialog(null, "Thank you for using my mortgage calculator :)");
-        getInput();
-        calculations();
-        printResults();
-
-    }
-
-
-  //----------------------------------------------------------------------------------------------------------------//
-
-
+// Gets the input values and stores them in the variables
     static void getInput() {
 
         try{
@@ -39,7 +48,7 @@ static float interestRate;
         catch (Exception e) {
 
             JOptionPane.showMessageDialog(null, "Invalid input try again...");
-
+            System.exit(0);
         }
 
     }
@@ -51,6 +60,7 @@ static float interestRate;
     static double totalLoan;
 
 
+// does the calculations for the mortgage payments
     public static void calculations(){
 
         float numOfPayments = years * 12;
@@ -64,10 +74,11 @@ static float interestRate;
 
 
         monthlyPayments = loan * (numerator/denomerator);
-        totalLoan = monthlyPayments * 12 + loan ;
+        totalLoan = monthlyPayments * numOfPayments ;
     }
 
 
+// Prints and formats the values
     public static void printResults() {
 
 
@@ -77,11 +88,16 @@ static float interestRate;
         String monthlyPaymentsFormat = initLoan.format(monthlyPayments);
         String totalLoanFormat = initLoan.format(totalLoan);
 
-        String paymentStats = "Loan amount : "+ loanFormat +"\n" + "Interest rate : " + interestRate + "\n\n" + "Monthly payments : " + monthlyPaymentsFormat + "\n" + "Total loan payment : " + totalLoanFormat ;
+        String paymentStats = "Initial loan amount : "+ loanFormat +"\n" + "Annual interest rate : " + interestRate +" %"+ "\n\n" + "Monthly payments : " + monthlyPaymentsFormat + "\n" + "Total loan cost : " + totalLoanFormat ;
         JOptionPane.showMessageDialog(null, "Borrowing " + loanFormat + " with an " + interestRate + " % interest rate over " + years + " years, will give you : \n\n" + paymentStats);
 
 
     }
 
+    public static void thankYouMessage (){
+
+        JOptionPane.showMessageDialog(null, "Have a good day !");
+
+    }
 
 }
