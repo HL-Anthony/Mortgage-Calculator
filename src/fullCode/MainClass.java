@@ -60,11 +60,11 @@ static float interestRate;
 
 
         double numerator = (Math.pow(onePlussInterest, numOfPayments)) * monthlyInterestRate;
-        double denomerator = (numerator - 1);
+        double denomerator = (Math.pow(onePlussInterest, numOfPayments)) - 1;
 
 
         monthlyPayments = loan * (numerator/denomerator);
-        totalLoan = monthlyPayments * 12 ;
+        totalLoan = monthlyPayments * 12 + loan ;
     }
 
 
@@ -78,7 +78,7 @@ static float interestRate;
         String totalLoanFormat = initLoan.format(totalLoan);
 
         String paymentStats = "Loan amount : "+ loanFormat +"\n" + "Interest rate : " + interestRate + "\n\n" + "Monthly payments : " + monthlyPaymentsFormat + "\n" + "Total loan payment : " + totalLoanFormat ;
-        JOptionPane.showMessageDialog(null, "Borrowing " + loanFormat + " With an " + interestRate + " % interest rate wil give you : \n\n" + paymentStats);
+        JOptionPane.showMessageDialog(null, "Borrowing " + loanFormat + " with an " + interestRate + " % interest rate over " + years + " years, will give you : \n\n" + paymentStats);
 
 
     }
