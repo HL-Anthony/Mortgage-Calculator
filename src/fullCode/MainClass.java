@@ -96,7 +96,7 @@ static float interestRate;
 
     public static void thankYouMessage (){
 
-        JOptionPane.showMessageDialog(null, "Have a good day !");
+        JOptionPane.showMessageDialog(null, "Have a good day :) !");
 
     }
 
